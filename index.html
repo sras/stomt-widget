@@ -3,7 +3,6 @@
     <title>Angular QuickStart</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles.css">
     <!-- 1. Load libraries -->
      <!-- Polyfill(s) for older browsers -->
     <script src="node_modules/core-js/client/shim.min.js"></script>
@@ -15,9 +14,17 @@
     <script>
       System.import('app').catch(function(err){ console.error(err); });
     </script>
+    <style>
+    @font-face{font-family:'icon';src:url("fonts/icon.woff") format("woff"),url("fonts/icon.ttf") format("truetype"),url("fonts/icon.svg#icon") format("svg");}
+
+    @font-face{font-family:'Lato';src:url("fonts/lato.woff") format("woff"),url("fonts/icon.ttf") format("truetype"),url("fonts/icon.svg#icon") format("svg");}
+    body {
+        font-family: "Lato",sans-serif;
+    }
+    </style>
   </head>
   <!-- 3. Display the application -->
   <body>
-    <my-app></my-app>
+    <stomt-widget></stomt-widget>
   </body>
 </html>
