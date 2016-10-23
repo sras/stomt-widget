@@ -49,6 +49,7 @@ export class StomtinputComponent {
   untouched: boolean = true
 
   contentChange(content: string) {
+    console.log(JSON.stringify(content))
     this.untouched = (content === 'would') || (content === 'because')
   }
 }

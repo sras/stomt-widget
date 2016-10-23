@@ -26,7 +26,7 @@ export class ContentEditableComponent implements OnChanges {
   }
 
   inputHandler() {
-    this.contentChange.emit(this.contentEditableElement.innerText)
+    this.contentChange.emit(this.contentEditableElement.textContent)
   }
 
   ngOnChanges(changes: SimpleChanges) {
