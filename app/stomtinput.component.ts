@@ -1,4 +1,7 @@
-import { Component, ViewChild, Input, Output, ElementRef, EventEmitter } from '@angular/core'
+import { Component, ViewChild, Input, Output, EventEmitter } from '@angular/core'
+import { LocationService } from './location.service'
+import { DropdownService } from './dropdown.service'
+
 @Component({
   selector: 'stomt-input',
   template: `
@@ -10,6 +13,7 @@ import { Component, ViewChild, Input, Output, ElementRef, EventEmitter } from '@
       {{state=='like'?'because':'would'}}...just try to finish the sentence. Be on point. Only one {{state}} per stomt!
     </div>
   </div>
+  <div class="drop-down-container"></div>
   `,
   styles: [`
     :host >>> .content-editable {
@@ -27,7 +31,6 @@ import { Component, ViewChild, Input, Output, ElementRef, EventEmitter } from '@
     }
     .wrapper {
       color: gray;
-      position: relative;
       height: 100px;
       position: absolute;
       left: 0px;
@@ -48,8 +51,15 @@ export class StomtinputComponent {
 
   untouched: boolean = true
 
+  constructor(
+      private dropdownService: DropdownService,
+      private locationService: LocationService) {}
+
   contentChange(content: string) {
-    console.log(JSON.stringify(content))
+    if (content.substr(-1, 1) === '@') {
+      let l = this.locationService.getCaretLocation()
+      this.dropdownService.openAt(l.left, l.top + 20)
+    }
     this.untouched = (content === 'would') || (content === 'because')
   }
 }

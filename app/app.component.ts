@@ -12,6 +12,7 @@ import { Target } from './entities';
       (contentChange)="contentChange($event)"
       [state]="bubbleStatus"></stomt-input>
   </div>
+  <dropdown></dropdown>
   `,
   styles: [`
   .stomt-create-form {
